@@ -6,6 +6,8 @@ const program = new commander.Command();
 program
   .version(version)
   .description(description)
+  .option('-f, --f [format]', 'Output format')
+  .arguments('<firstConfig> <secondConfig>')
   .action(() => {
     console.log('hey');
   });
