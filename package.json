@@ -1,0 +1,47 @@
+{
+  "name": "gendiff_project_hexlet",
+  "version": "1.0.0",
+  "description": "Compares two configuration files and shows a difference.",
+  "keywords": [
+    "cli app",
+    "hexlet",
+    "js"
+  ],
+  "main": "dist/index.js",
+  "bin": {
+    "gendiff": "dist/bin/gendiff.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
+    "prepublishOnly": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1ocke/frontend-project-lvl2.git"
+  },
+  "author": "Andrew Zabelin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/1ocke/frontend-project-lvl2/issues"
+  },
+  "homepage": "https://github.com/1ocke/frontend-project-lvl2#readme",
+  "dependencies": {
+    "commander": "^3.0.0"
+  },
+  "devDependencies": {
+    "@babel/node": "^7.5.5",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^10.0.3",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "eslint": "^6.2.2",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jest": "^22.15.2",
+    "jest": "^24.9.0"
+  }
+}
