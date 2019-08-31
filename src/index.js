@@ -28,7 +28,7 @@ const genDiff = (firstFile, secondFile) => {
   }, '');
 };
 
-console.log(genDiff('before.json', 'after.json'));
+export default genDiff;
 
 // {
 //     host: hexletio
