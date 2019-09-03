@@ -1,6 +1,6 @@
 import commander from 'commander';
 import { version, description } from '../package.json';
-import genDiff from './index';
+import genDiff from '.';
 
 const program = new commander.Command();
 

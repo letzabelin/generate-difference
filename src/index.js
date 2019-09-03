@@ -1,8 +1,8 @@
-const fs = require('fs');
-const _ = require('lodash');
+import fs from 'fs';
+import _ from 'lodash';
 
 const indent = '  ';
-const newLine = '\n';
+const indentLarge = '    ';
 
 const genDiff = (firstFile, secondFile) => {
   const firstContent = fs.readFileSync(firstFile, 'utf8');
@@ -13,28 +13,24 @@ const genDiff = (firstFile, secondFile) => {
 
   const keys = _.union(_.keys(firstObj), _.keys(secondObj));
 
-  return keys.reduce((acc, key) => {
+  const res = keys.map((key) => {
     if (_.has(firstObj, key) && _.has(secondObj, key) && firstObj[key] === secondObj[key]) {
-      acc += `${indent}${key}: ${secondObj[key]}${newLine}`;
-    } else if (_.has(firstObj, key) && _.has(secondObj, key) && firstObj[key] !== secondObj[key]) {
-      acc += `+ ${key}: ${secondObj[key]}${newLine}- ${key}: ${firstObj[key]}${newLine}`;
-    } else if (_.has(firstObj, key) && !_.has(secondObj, key)) {
-      acc += `- ${key}: ${firstObj[key]}${newLine}`;
-    } else if (!_.has(firstObj, key) && _.has(secondObj, key)) {
-      acc += `+ ${key}: ${secondObj[key]}`;
+      return `${indentLarge}${key}: ${secondObj[key]}`;
+    }
+    if (_.has(firstObj, key) && _.has(secondObj, key) && firstObj[key] !== secondObj[key]) {
+      return `${indent}+ ${key}: ${secondObj[key]}\n${indent}- ${key}: ${firstObj[key]}`;
+    }
+    if (_.has(firstObj, key) && !_.has(secondObj, key)) {
+      return `${indent}- ${key}: ${firstObj[key]}`;
+    }
+    if (!_.has(firstObj, key) && _.has(secondObj, key)) {
+      return `${indent}+ ${key}: ${secondObj[key]}`;
     }
 
-    return acc;
-  }, '');
+    return '';
+  });
+
+  return `{\n${res.join('\n')}\n}`;
 };
 
 export default genDiff;
-
-// {
-//     host: hexletio
-//   + timeout: 20
-//   - timeout: 50
-//   - proxy: 123.234.53.22
-//   + verbose: true
-//   - follow: false
-// }
