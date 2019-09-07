@@ -4,7 +4,7 @@ import _ from 'lodash';
 const indent = '  ';
 const indentLarge = '    ';
 
-const genDiff = (firstFile, secondFile) => {
+const gendiff = (firstFile, secondFile) => {
   const firstContent = fs.readFileSync(firstFile, 'utf8');
   const secondContent = fs.readFileSync(secondFile, 'utf8');
 
@@ -33,4 +33,4 @@ const genDiff = (firstFile, secondFile) => {
   return `{\n${res.join('\n')}\n}`;
 };
 
-export default genDiff;
+export default gendiff;

@@ -1,5 +1,5 @@
 {
-  "name": "genDiff_project_hexlet",
+  "name": "gendiff_project_hexlet",
   "version": "1.0.0",
   "description": "Compares two configuration files and shows a difference.",
   "keywords": [
@@ -9,12 +9,13 @@
   ],
   "main": "index.js",
   "bin": {
-    "genDiff": "dist/bin/genDiff.js"
+    "gendiff": "dist/bin/gendiff.js"
   },
   "files": [
     "dist"
   ],
   "scripts": {
+    "test": "jest",
     "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
     "prepublishOnly": "npm run build"
   },
@@ -41,6 +42,7 @@
     "babel-preset-stage-0": "^6.24.1",
     "eslint": "^6.2.2",
     "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-babel": "^5.3.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jest": "^22.15.2",
     "jest": "^24.9.0"
