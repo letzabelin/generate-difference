@@ -1,5 +1,5 @@
 {
-  "name": "gendiff_project_hexlet",
+  "name": "genDiff_project_hexlet",
   "version": "1.0.0",
   "description": "Compares two configuration files and shows a difference.",
   "keywords": [
@@ -9,7 +9,7 @@
   ],
   "main": "index.js",
   "bin": {
-    "gendiff": "dist/bin/gendiff.js"
+    "genDiff": "dist/bin/genDiff.js"
   },
   "files": [
     "dist"
