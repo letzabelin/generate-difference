@@ -27,7 +27,7 @@
 
 [![asciicast](https://asciinema.org/a/rceNPT2iiDxs8YbMLtUbcfsfn.svg)](https://asciinema.org/a/rceNPT2iiDxs8YbMLtUbcfsfn)
 
-## Сравнение плоских файлов в формате yaml
+## Сравнение плоских файлов в формате ini
 
 ```$ gendiff <firstFile> <secondFile>```
 
