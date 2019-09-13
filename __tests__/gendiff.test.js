@@ -2,29 +2,18 @@ import fs from 'fs';
 import path from 'path';
 import gendiff from '../src';
 
-test('diff plain json', () => {
-  const pathToFile1 = path.resolve(__dirname, '__fixtures__/before.json');
-  const pathToFile2 = path.resolve(__dirname, '__fixtures__/after.json');
-  const pathToResFile = path.resolve(__dirname, '__fixtures__/diff-plain.txt');
-  const diffFromFile = fs.readFileSync(pathToResFile, 'utf8');
-  const diff = gendiff(pathToFile1, pathToFile2);
-  expect(diffFromFile).toEqual(diff);
-});
+const interFormats = ['json', 'yml', 'ini'];
 
-test('diff plain yml', () => {
-  const pathToFile1 = path.resolve(__dirname, '__fixtures__/before.yml');
-  const pathToFile2 = path.resolve(__dirname, '__fixtures__/after.yml');
-  const pathToResFile = path.resolve(__dirname, '__fixtures__/diff-plain.txt');
-  const diffFromFile = fs.readFileSync(pathToResFile, 'utf8');
-  const diff = gendiff(pathToFile1, pathToFile2);
-  expect(diffFromFile).toEqual(diff);
-});
+const getFilePath = (formats) => formats.map((element) => ([
+  path.resolve(__dirname, `__fixtures__/before.${element}`),
+  path.resolve(__dirname, `__fixtures__/after.${element}`),
+]));
 
-test('diff plain ini', () => {
-  const pathToFile1 = path.resolve(__dirname, '__fixtures__/before.ini');
-  const pathToFile2 = path.resolve(__dirname, '__fixtures__/after.ini');
-  const pathToResFile = path.resolve(__dirname, '__fixtures__/diff-plain.txt');
-  const diffFromFile = fs.readFileSync(pathToResFile, 'utf8');
-  const diff = gendiff(pathToFile1, pathToFile2);
-  expect(diffFromFile).toEqual(diff);
-});
+const result = fs.readFileSync(path.resolve(__dirname, '__fixtures__/diff-plain.txt'), 'utf8');
+
+test.each(getFilePath(interFormats))(
+  'gendiff test',
+  (before, after) => {
+    expect(gendiff(before, after)).toEqual(result);
+  },
+);
