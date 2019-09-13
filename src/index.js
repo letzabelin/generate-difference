@@ -1,38 +1,49 @@
 import fs from 'fs';
 import _ from 'lodash';
-// import path from 'path';
-// import parse from './parsers';
+import path from 'path';
+import parse from './parsers';
+import render from './renders/plain-render';
 
-const tab = '  ';
-const indentLarge = '    ';
+const getData = (file) => {
+  const filePath = path.resolve(file);
+  const type = path.extname(filePath).slice(1);
+  const obj = fs.readFileSync(filePath, 'utf8');
 
-const gendiff = (firstFile, secondFile) => {
-  const firstContent = fs.readFileSync(firstFile, 'utf8');
-  const secondContent = fs.readFileSync(secondFile, 'utf8');
+  return parse(type, obj);
+};
 
-  const firstObj = JSON.parse(firstContent);
-  const secondObj = JSON.parse(secondContent);
+const buildAST = (data1, data2) => {
+  const keys = _.union(_.keys(data1), _.keys(data2));
 
-  const keys = _.union(_.keys(firstObj), _.keys(secondObj));
+  return keys.map((key) => {
+    const value1 = data1[key];
+    const value2 = data2[key];
 
-  const res = keys.map((key) => {
-    if (_.has(firstObj, key) && _.has(secondObj, key) && firstObj[key] === secondObj[key]) {
-      return `${indentLarge}${key}: ${secondObj[key]}`;
+    if (_.has(data1, key) && !_.has(data2, key)) {
+      return { type: 'removed', key, removedValue: value1 };
     }
-    if (_.has(firstObj, key) && _.has(secondObj, key) && firstObj[key] !== secondObj[key]) {
-      return `${tab}+ ${key}: ${secondObj[key]}\n${tab}- ${key}: ${firstObj[key]}`;
+    if (!_.has(data1, key) && _.has(data2, key)) {
+      return { type: 'added', key, currentValue: value2 };
     }
-    if (_.has(firstObj, key) && !_.has(secondObj, key)) {
-      return `${tab}- ${key}: ${firstObj[key]}`;
-    }
-    if (!_.has(firstObj, key) && _.has(secondObj, key)) {
-      return `${tab}+ ${key}: ${secondObj[key]}`;
+    if (value1 === value2) {
+      return { type: 'equal', key, currentValue: value1 };
     }
 
-    return '';
+    return {
+      type: 'changed',
+      key,
+      removedValue: value1,
+      currentValue: value2,
+    };
   });
+};
 
-  return `{\n${res.join('\n')}\n}`;
+const gendiff = (file1, file2) => {
+  const data1 = getData(file1);
+  const data2 = getData(file2);
+  const diff = buildAST(data1, data2);
+
+  return render(diff);
 };
 
 export default gendiff;
