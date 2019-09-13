@@ -15,14 +15,20 @@
 
 [![asciicast](https://asciinema.org/a/7rJVKTWPdoT9rbPb9TK0LgfHp.svg)](https://asciinema.org/a/7rJVKTWPdoT9rbPb9TK0LgfHp)
 
-## Сравнение файлов в формате json
+## Сравнение плоских файлов в формате json
 
 ```$ gendiff <firstFile> <secondFile>```
 
 [![asciicast](https://asciinema.org/a/rhD9q0SMsC7dsInEdO0svxcp2.svg)](https://asciinema.org/a/rhD9q0SMsC7dsInEdO0svxcp2)
 
-## Сравнение файлов в формате yaml
+## Сравнение плоских файлов в формате yaml
 
 ```$ gendiff <firstFile> <secondFile>```
 
 [![asciicast](https://asciinema.org/a/rceNPT2iiDxs8YbMLtUbcfsfn.svg)](https://asciinema.org/a/rceNPT2iiDxs8YbMLtUbcfsfn)
+
+## Сравнение плоских файлов в формате yaml
+
+```$ gendiff <firstFile> <secondFile>```
+
+[![asciicast](https://asciinema.org/a/qLC7ff53sOp1emXRv3HwywMg7.svg)](https://asciinema.org/a/qLC7ff53sOp1emXRv3HwywMg7)
