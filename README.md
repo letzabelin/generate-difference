@@ -32,3 +32,9 @@
 ```$ gendiff <firstFile> <secondFile>```
 
 [![asciicast](https://asciinema.org/a/qLC7ff53sOp1emXRv3HwywMg7.svg)](https://asciinema.org/a/qLC7ff53sOp1emXRv3HwywMg7)
+
+## Сравнение файлов, имеющих вложенную структуру
+
+```$ gendiff <firstFile> <secondFile>```
+
+[![asciicast](https://asciinema.org/a/BxmkPOlYfjTksVhni1xUq4BUO.svg)](https://asciinema.org/a/BxmkPOlYfjTksVhni1xUq4BUO)
