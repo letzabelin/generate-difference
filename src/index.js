@@ -2,7 +2,7 @@ import fs from 'fs';
 import _ from 'lodash';
 import path from 'path';
 import parse from './parsers';
-import render from './renders/plain-render';
+import render from './renders/pretty-render';
 
 const getData = (file) => {
   const filePath = path.resolve(file);
@@ -19,6 +19,9 @@ const buildAST = (data1, data2) => {
     const value1 = data1[key];
     const value2 = data2[key];
 
+    if (value1 instanceof Object && value2 instanceof Object) {
+      return { type: 'isObject', key, currentValue: buildAST(value1, value2) };
+    }
     if (_.has(data1, key) && !_.has(data2, key)) {
       return { type: 'removed', key, removedValue: value1 };
     }

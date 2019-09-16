@@ -9,7 +9,7 @@ const getFilePath = (formats) => formats.map((element) => ([
   path.resolve(__dirname, `__fixtures__/after.${element}`),
 ]));
 
-const result = fs.readFileSync(path.resolve(__dirname, '__fixtures__/diff-plain.txt'), 'utf8');
+const result = fs.readFileSync(path.resolve(__dirname, '__fixtures__/diff-pretty.txt'), 'utf8');
 
 test.each(getFilePath(interFormats))(
   'gendiff test',
