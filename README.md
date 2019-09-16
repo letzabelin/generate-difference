@@ -38,3 +38,7 @@
 ```$ gendiff <firstFile> <secondFile>```
 
 [![asciicast](https://asciinema.org/a/BxmkPOlYfjTksVhni1xUq4BUO.svg)](https://asciinema.org/a/BxmkPOlYfjTksVhni1xUq4BUO)
+
+## Сравнение файлов, имеющих вложенную структуру, в формате "Plain"
+
+[![asciicast](https://asciinema.org/a/7BOhk7FoBwjm6iDyJh7rMFZzO.svg)](https://asciinema.org/a/7BOhk7FoBwjm6iDyJh7rMFZzO)

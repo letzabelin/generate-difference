@@ -4,7 +4,9 @@ const tab = '  ';
 const tabStep = 2;
 
 const handler = (item, indent) => {
-  if (!(item instanceof Object)) return item;
+  if (!(item instanceof Object)) {
+    return item;
+  }
 
   const func = ([key, value]) => `{\n${indent}${tab.repeat(3)}${key}: ${value}\n${indent}${tab}}`;
   return Object.entries(item).map(func);

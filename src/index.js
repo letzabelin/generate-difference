@@ -2,7 +2,7 @@ import fs from 'fs';
 import _ from 'lodash';
 import path from 'path';
 import parse from './parsers';
-import render from './renders/pretty-render';
+import render from './formatters';
 
 const getData = (file) => {
   const filePath = path.resolve(file);
@@ -41,12 +41,12 @@ const buildAST = (data1, data2) => {
   });
 };
 
-const gendiff = (file1, file2) => {
+const gendiff = (file1, file2, format) => {
   const data1 = getData(file1);
   const data2 = getData(file2);
   const diff = buildAST(data1, data2);
 
-  return render(diff);
+  return render(diff, format);
 };
 
 export default gendiff;

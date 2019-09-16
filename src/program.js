@@ -5,9 +5,9 @@ import gendiff from '.';
 export default () => commander
   .version(version)
   .description(description)
-  .option('-f, --f [format]', 'Output format')
+  .option('-f, --format <type>', 'Output format [pretty]', 'pretty')
   .arguments('<firstConfig> <secondConfig>')
   .action((firstConfig, secondConfig) => {
-    console.log(gendiff(firstConfig, secondConfig));
+    console.log(gendiff(firstConfig, secondConfig, commander.format));
   })
   .parse(process.argv);

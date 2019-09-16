@@ -9,11 +9,16 @@ const getFilePath = (formats) => formats.map((element) => ([
   path.resolve(__dirname, `__fixtures__/after.${element}`),
 ]));
 
-const result = fs.readFileSync(path.resolve(__dirname, '__fixtures__/diff-pretty.txt'), 'utf8');
+const getResultPath = (format) => {
+  const result = path.resolve(__dirname, `__fixtures__/diff-${format}.txt`);
+  return fs.readFileSync(result, 'utf8');
+};
 
 test.each(getFilePath(interFormats))(
   'gendiff test',
   (before, after) => {
-    expect(gendiff(before, after)).toEqual(result);
+    expect(gendiff(before, after, 'pretty')).toEqual(getResultPath('pretty'));
+    expect(gendiff(before, after, 'plain')).toEqual(getResultPath('plain'));
+    expect(gendiff(before, after, 'json')).toEqual(getResultPath('json'));
   },
 );
