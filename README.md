@@ -41,4 +41,12 @@
 
 ## Сравнение файлов, имеющих вложенную структуру, в формате "Plain"
 
+```$ gendiff -f plain <firstFile> <secondFile>```
+
 [![asciicast](https://asciinema.org/a/7BOhk7FoBwjm6iDyJh7rMFZzO.svg)](https://asciinema.org/a/7BOhk7FoBwjm6iDyJh7rMFZzO)
+
+## Сравнение файлов, имеющих вложенную структуру, в формате "Json"
+
+```$ gendiff -f json <firstFile> <secondFile>```
+
+[![asciicast](https://asciinema.org/a/GiQIWcF6FMR4FoyE14ysql0gS.svg)](https://asciinema.org/a/GiQIWcF6FMR4FoyE14ysql0gS)
