@@ -1,6 +1,6 @@
 [
   {
-    "type": "isObject",
+    "type": "nested",
     "key": "common",
     "currentValue": [
       {
@@ -22,7 +22,7 @@
         }
       },
       {
-        "type": "isObject",
+        "type": "nested",
         "key": "setting6",
         "currentValue": [
           {
@@ -57,7 +57,7 @@
     ]
   },
   {
-    "type": "isObject",
+    "type": "nested",
     "key": "group1",
     "currentValue": [
       {

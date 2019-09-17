@@ -1,15 +1,19 @@
-const handler = (item) => {
-  if (typeof item === 'string') {
-    return `'${item}'`;
+import _ from 'lodash';
+
+const handler = (element) => {
+  if (typeof element === 'string') {
+    return `'${element}'`;
   }
-  if (item instanceof Object) {
+  if (_.isObject(element)) {
     return '[complex value]';
   }
 
-  return item;
+  return element;
 };
 
-const buildPath = (dir, base) => [dir, base].filter((e) => e !== '').join('.');
+const filterFunc = (e) => e !== '';
+
+const buildPath = (dir, base) => [dir, base].filter(filterFunc).join('.');
 
 const render = (diff, path = '') => {
   const func = ({
@@ -21,7 +25,7 @@ const render = (diff, path = '') => {
     const fullPath = buildPath(path, key);
 
     const types = {
-      isObject: () => render(currentValue, fullPath),
+      nested: () => render(currentValue, fullPath),
       equal: () => '',
       added: () => `Property '${fullPath}' was added with value: ${handler(currentValue)}`,
       removed: () => `Property '${fullPath}' was removed`,
@@ -31,7 +35,7 @@ const render = (diff, path = '') => {
     return types[type]();
   };
 
-  return diff.map(func).filter((e) => e !== '').join('\n');
+  return diff.map(func).filter(filterFunc).join('\n');
 };
 
 export default (diff) => render(diff, '');

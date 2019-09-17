@@ -4,8 +4,8 @@ import path from 'path';
 import parse from './parsers';
 import render from './formatters';
 
-const getData = (file) => {
-  const filePath = path.resolve(file);
+const getData = (configFile) => {
+  const filePath = path.resolve(configFile);
   const type = path.extname(filePath).slice(1);
   const obj = fs.readFileSync(filePath, 'utf8');
 
@@ -19,8 +19,8 @@ const buildAST = (data1, data2) => {
     const value1 = data1[key];
     const value2 = data2[key];
 
-    if (value1 instanceof Object && value2 instanceof Object) {
-      return { type: 'isObject', key, currentValue: buildAST(value1, value2) };
+    if (_.isObject(value1) && _.isObject(value2)) {
+      return { type: 'nested', key, currentValue: buildAST(value1, value2) };
     }
     if (_.has(data1, key) && !_.has(data2, key)) {
       return { type: 'removed', key, removedValue: value1 };
@@ -41,12 +41,10 @@ const buildAST = (data1, data2) => {
   });
 };
 
-const gendiff = (file1, file2, format) => {
-  const data1 = getData(file1);
-  const data2 = getData(file2);
+export default (configFile1, configFile2, format) => {
+  const data1 = getData(configFile1);
+  const data2 = getData(configFile2);
   const diff = buildAST(data1, data2);
 
   return render(diff, format);
 };
-
-export default gendiff;
