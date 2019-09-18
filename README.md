@@ -15,37 +15,37 @@
 
 [![asciicast](https://asciinema.org/a/7rJVKTWPdoT9rbPb9TK0LgfHp.svg)](https://asciinema.org/a/7rJVKTWPdoT9rbPb9TK0LgfHp)
 
-## Сравнение плоских файлов с расширением 'json'
+## Сравнение плоских файлов с расширением "json"
 
 ```$ gendiff <firstFile> <secondFile>```
 
 [![asciicast](https://asciinema.org/a/rhD9q0SMsC7dsInEdO0svxcp2.svg)](https://asciinema.org/a/rhD9q0SMsC7dsInEdO0svxcp2)
 
-## Сравнение плоских файлов с расширением 'yml'
+## Сравнение плоских файлов с расширением "yml"
 
 ```$ gendiff <firstFile> <secondFile>```
 
 [![asciicast](https://asciinema.org/a/rceNPT2iiDxs8YbMLtUbcfsfn.svg)](https://asciinema.org/a/rceNPT2iiDxs8YbMLtUbcfsfn)
 
-## Сравнение плоских файлов с расширением 'ini'
+## Сравнение плоских файлов с расширением "ini"
 
 ```$ gendiff <firstFile> <secondFile>```
 
 [![asciicast](https://asciinema.org/a/qLC7ff53sOp1emXRv3HwywMg7.svg)](https://asciinema.org/a/qLC7ff53sOp1emXRv3HwywMg7)
 
-## Сравнение файлов с вложенной структурой в формате "Pretty"
+## Сравнение файлов с вложенной структурой в формате "pretty"
 
 ```$ gendiff <firstFile> <secondFile>```
 
 [![asciicast](https://asciinema.org/a/BxmkPOlYfjTksVhni1xUq4BUO.svg)](https://asciinema.org/a/BxmkPOlYfjTksVhni1xUq4BUO)
 
-## Сравнение файлов с вложенной структурой в формате "Plain"
+## Сравнение файлов с вложенной структурой в формате "plain"
 
 ```$ gendiff -f plain <firstFile> <secondFile>```
 
 [![asciicast](https://asciinema.org/a/7BOhk7FoBwjm6iDyJh7rMFZzO.svg)](https://asciinema.org/a/7BOhk7FoBwjm6iDyJh7rMFZzO)
 
-## Сравнение файлов с вложенной структурой в формате "Json"
+## Сравнение файлов с вложенной структурой в формате "json"
 
 ```$ gendiff -f json <firstFile> <secondFile>```
 
