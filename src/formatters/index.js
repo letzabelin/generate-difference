@@ -8,4 +8,4 @@ const formatters = {
   json: jsonRender,
 };
 
-export default (diff, format) => formatters[format](diff);
+export default (ast, format) => formatters[format](ast);

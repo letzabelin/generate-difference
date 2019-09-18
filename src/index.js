@@ -4,12 +4,12 @@ import path from 'path';
 import parse from './parsers';
 import render from './formatters';
 
-const getData = (configFile) => {
-  const filePath = path.resolve(configFile);
-  const type = path.extname(filePath).slice(1);
-  const obj = fs.readFileSync(filePath, 'utf8');
+const getData = (configFilePath) => {
+  const absolutePath = path.resolve(configFilePath);
+  const extensionName = path.extname(absolutePath).slice(1);
+  const data = fs.readFileSync(absolutePath, 'utf8');
 
-  return parse(type, obj);
+  return parse(data, extensionName);
 };
 
 const buildAST = (data1, data2) => {
@@ -41,10 +41,10 @@ const buildAST = (data1, data2) => {
   });
 };
 
-export default (configFile1, configFile2, format) => {
-  const data1 = getData(configFile1);
-  const data2 = getData(configFile2);
-  const diff = buildAST(data1, data2);
+export default (firstConfig, secondConfig, format) => {
+  const data1 = getData(firstConfig);
+  const data2 = getData(secondConfig);
+  const ast = buildAST(data1, data2);
 
-  return render(diff, format);
+  return render(ast, format);
 };

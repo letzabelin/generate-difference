@@ -1,22 +1,22 @@
 import _ from 'lodash';
 
-const handler = (element) => {
-  if (typeof element === 'string') {
-    return `'${element}'`;
+const handleValue = (value) => {
+  if (typeof value === 'string') {
+    return `'${value}'`;
   }
-  if (_.isObject(element)) {
+  if (_.isObject(value)) {
     return '[complex value]';
   }
 
-  return element;
+  return value;
 };
 
-const filterFunc = (e) => e !== '';
+const removeEmptyStrings = (string) => string !== '';
 
-const buildPath = (dir, base) => [dir, base].filter(filterFunc).join('.');
+const buildPath = (dir, base) => [dir, base].filter(removeEmptyStrings).join('.');
 
-const render = (diff, path = '') => {
-  const func = ({
+const render = (ast, path = '') => {
+  const convertAstToDiff = ({
     type,
     key,
     removedValue,
@@ -27,15 +27,15 @@ const render = (diff, path = '') => {
     const types = {
       nested: () => render(currentValue, fullPath),
       equal: () => '',
-      added: () => `Property '${fullPath}' was added with value: ${handler(currentValue)}`,
+      added: () => `Property '${fullPath}' was added with value: ${handleValue(currentValue)}`,
       removed: () => `Property '${fullPath}' was removed`,
-      changed: () => `Property '${fullPath}' was updated. From ${handler(removedValue)} to ${handler(currentValue)}`,
+      changed: () => `Property '${fullPath}' was updated. From ${handleValue(removedValue)} to ${handleValue(currentValue)}`,
     };
 
     return types[type]();
   };
 
-  return diff.map(func).filter(filterFunc).join('\n');
+  return ast.map(convertAstToDiff).filter(removeEmptyStrings).join('\n');
 };
 
-export default (diff) => render(diff, '');
+export default (ast) => render(ast, '');

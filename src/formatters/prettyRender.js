@@ -3,17 +3,17 @@ import _ from 'lodash';
 const tab = '  ';
 const tabStep = 2;
 
-const handler = (element, indent) => {
-  if (!_.isObject(element)) {
-    return element;
+const handleValue = (value, indent) => {
+  if (!_.isObject(value)) {
+    return value;
   }
 
-  const func = ([key, value]) => `{\n${indent}${tab.repeat(3)}${key}: ${value}\n${indent}${tab}}`;
-  return Object.entries(element).map(func);
+  const convertObjectToString = ([key, objectValue]) => `{\n${indent}${tab.repeat(3)}${key}: ${objectValue}\n${indent}${tab}}`;
+  return Object.entries(value).map(convertObjectToString);
 };
 
-const render = (diff, tabCount) => {
-  const func = ({
+const render = (ast, tabCount) => {
+  const convertAstToDiff = ({
     type,
     key,
     removedValue,
@@ -23,16 +23,16 @@ const render = (diff, tabCount) => {
 
     const types = {
       nested: () => `${indent}${tab}${key}: {\n${render(currentValue, tabCount + tabStep)}\n${indent}${tab}}`,
-      equal: () => `${indent}${tab}${key}: ${handler(currentValue, indent)}`,
-      added: () => `${indent}+ ${key}: ${handler(currentValue, indent)}`,
-      removed: () => `${indent}- ${key}: ${handler(removedValue, indent)}`,
-      changed: () => `${indent}+ ${key}: ${handler(currentValue, indent)}\n${indent}- ${key}: ${handler(removedValue, indent)}`,
+      equal: () => `${indent}${tab}${key}: ${handleValue(currentValue, indent)}`,
+      added: () => `${indent}+ ${key}: ${handleValue(currentValue, indent)}`,
+      removed: () => `${indent}- ${key}: ${handleValue(removedValue, indent)}`,
+      changed: () => `${indent}+ ${key}: ${handleValue(currentValue, indent)}\n${indent}- ${key}: ${handleValue(removedValue, indent)}`,
     };
 
     return types[type]();
   };
 
-  return _.flatten(diff.map(func)).join('\n');
+  return ast.map(convertAstToDiff).join('\n');
 };
 
-export default (diff) => `{\n${render(diff, 1)}\n}`;
+export default (ast) => `{\n${render(ast, 1)}\n}`;

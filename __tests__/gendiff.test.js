@@ -2,11 +2,11 @@ import fs from 'fs';
 import path from 'path';
 import gendiff from '../src';
 
-const interFormats = ['json', 'yml', 'ini'];
+const interExtensionNames = ['json', 'yml', 'ini'];
 
-const getFilePath = (formats) => formats.map((element) => ([
-  path.resolve(__dirname, `__fixtures__/before.${element}`),
-  path.resolve(__dirname, `__fixtures__/after.${element}`),
+const getFilePath = (extensionNames) => extensionNames.map((extensionName) => ([
+  path.resolve(__dirname, `__fixtures__/before.${extensionName}`),
+  path.resolve(__dirname, `__fixtures__/after.${extensionName}`),
 ]));
 
 const getResultPath = (format) => {
@@ -14,8 +14,8 @@ const getResultPath = (format) => {
   return fs.readFileSync(result, 'utf8');
 };
 
-test.each(getFilePath(interFormats))(
-  'gendiff test',
+test.each(getFilePath(interExtensionNames))(
+  'generate difference between two configuration files',
   (before, after) => {
     expect(gendiff(before, after, 'pretty')).toEqual(getResultPath('pretty'));
     expect(gendiff(before, after, 'plain')).toEqual(getResultPath('plain'));
