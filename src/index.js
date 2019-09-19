@@ -41,9 +41,9 @@ const buildAST = (data1, data2) => {
   });
 };
 
-export default (firstConfig, secondConfig, format) => {
-  const data1 = getData(firstConfig);
-  const data2 = getData(secondConfig);
+export default (firstFilePath, secondFilePath, format) => {
+  const data1 = getData(firstFilePath);
+  const data2 = getData(secondFilePath);
   const ast = buildAST(data1, data2);
 
   return render(ast, format);

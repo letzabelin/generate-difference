@@ -7,7 +7,7 @@ export default () => commander
   .description(description)
   .option('-f, --format [type]', 'Output format', 'pretty')
   .arguments('<firstConfig> <secondConfig>')
-  .action((firstConfig, secondConfig) => {
-    console.log(gendiff(firstConfig, secondConfig, commander.format));
+  .action((firstFilePath, secondFilePath) => {
+    console.log(gendiff(firstFilePath, secondFilePath, commander.format));
   })
   .parse(process.argv);
