@@ -16,9 +16,9 @@ const getResultPath = (format) => {
 
 test.each(getFilePath(interExtensionNames))(
   'generate difference between two configuration files',
-  (before, after) => {
-    expect(gendiff(before, after, 'pretty')).toEqual(getResultPath('pretty'));
-    expect(gendiff(before, after, 'plain')).toEqual(getResultPath('plain'));
-    expect(gendiff(before, after, 'json')).toEqual(getResultPath('json'));
+  (beforeFilePath, afterFilePath) => {
+    expect(gendiff(beforeFilePath, afterFilePath, 'pretty')).toEqual(getResultPath('pretty'));
+    expect(gendiff(beforeFilePath, afterFilePath, 'plain')).toEqual(getResultPath('plain'));
+    expect(gendiff(beforeFilePath, afterFilePath, 'json')).toEqual(getResultPath('json'));
   },
 );

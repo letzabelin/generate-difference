@@ -26,13 +26,13 @@ const render = (ast, tabCount) => {
       equal: () => `${indent}${tab}${key}: ${handleValue(currentValue, indent)}`,
       added: () => `${indent}+ ${key}: ${handleValue(currentValue, indent)}`,
       removed: () => `${indent}- ${key}: ${handleValue(removedValue, indent)}`,
-      changed: () => `${indent}+ ${key}: ${handleValue(currentValue, indent)}\n${indent}- ${key}: ${handleValue(removedValue, indent)}`,
+      changed: () => [types.added(), types.removed()],
     };
 
     return types[type]();
   };
 
-  return ast.map(convertAstToDiff).join('\n');
+  return _.flatten(ast.map(convertAstToDiff)).join('\n');
 };
 
 export default (ast) => `{\n${render(ast, 1)}\n}`;
