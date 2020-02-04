@@ -3,22 +3,34 @@ name: Main workflow
 on: [push]
 
 jobs:
-  build:
-
-    runs-on: ubuntu-latest
-
+  test:
     strategy:
       matrix:
-        node-version: [13.x]
-
+        platform: [ ubuntu-latest ]
+        node: [ '12', '10' ]
+    name: test/node ${{ matrix.node }}/${{ matrix.platform }}
+    runs-on: ${{ matrix.platform }}
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
+    - uses: actions/checkout@master
+    - uses: actions/setup-node@master
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: ${{ matrix.node }}
     - run: npm i
     - run: make lint
     - run: make test
+  coverage:
+    needs: [ test ]
+    name: coverage
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: actions/setup-node@master
+      with:
+        node-version: '12'
+    - run: npm i
+    - run: make lint
+    - uses: paambaati/codeclimate-action@v2.2.4
       env:
-        CI: true
+        CC_TEST_REPORTER_ID: a57a829da5fcc39c55589ba280e0e05c123adcc8045a20510f4658ef8062e8ed
+      with:
+        coverageCommand: make test-coverage
