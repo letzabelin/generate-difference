@@ -1,7 +1,7 @@
-[![Main workflow](https://github.com/letzabelin/frontend-project-lvl2/workflows/Main%20workflow/badge.svg)](https://github.com/1ocke/frontend-project-lvl2/actions)
-[![Build Status](https://travis-ci.com/letzabelin/frontend-project-lvl2.svg?branch=master)](https://travis-ci.com/letzabelin/frontend-project-lvl2)
-[![Maintainability](https://api.codeclimate.com/v1/badges/bd780c263f070201781e/maintainability)](https://codeclimate.com/github/letzabelin/frontend-project-lvl2/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/bd780c263f070201781e/test_coverage)](https://codeclimate.com/github/letzabelin/frontend-project-lvl2/test_coverage)
+[![Main workflow](https://github.com/letzabelin/generate-different/workflows/Main%20workflow/badge.svg)](https://github.com/letzabelin/generate-different/actions)
+[![Build Status](https://travis-ci.com/letzabelin/generate-different.svg?branch=master)](https://travis-ci.com/letzabelin/generate-different)
+[![Maintainability](https://api.codeclimate.com/v1/badges/bd780c263f070201781e/maintainability)](https://codeclimate.com/github/letzabelin/generate-different/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/bd780c263f070201781e/test_coverage)](https://codeclimate.com/github/letzabelin/generate-different/test_coverage)
 
 # Вычислитель отличий by Hexlet
 
