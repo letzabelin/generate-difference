@@ -17,7 +17,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: | 
+    - run: |
         make install
         make lint
         make test
@@ -26,7 +26,7 @@ jobs:
     - name: Test & publish code coverage
       uses: paambaati/codeclimate-action@v2.4.0
       env:
-        CC_TEST_REPORTER_ID: 7184eb8c17819075355f0697c79b5e3bbff843a36cbe0b25cf70424d3a264d37
+        CC_TEST_REPORTER_ID: 4697a93fbd5a1e24350f651392444f7cd2c537e6680df11df9d1550d06b715ca
       with:
         coverageCommand: make test-coverage
         debug: true
