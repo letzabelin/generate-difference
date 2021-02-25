@@ -21,14 +21,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/1ocke/frontend-project-lvl2.git"
+    "url": "git+https://github.com/letzabelin/generate-difference.git"
   },
   "author": "Andrew Zabelin",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/1ocke/frontend-project-lvl2/issues"
+    "url": "https://github.com/letzabelin/generate-difference/issues"
   },
-  "homepage": "https://github.com/1ocke/frontend-project-lvl2#readme",
+  "homepage": "https://github.com/letzabelin/generate-difference#readme",
   "dependencies": {
     "commander": "^3.0.1",
     "ini": "^1.3.5",

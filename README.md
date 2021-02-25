@@ -1,7 +1,7 @@
 [![Main workflow](https://github.com/letzabelin/generate-difference/workflows/Main%20workflow/badge.svg)](https://github.com/letzabelin/generate-difference/actions)
 [![Build Status](https://travis-ci.com/letzabelin/generate-difference.svg?branch=master)](https://travis-ci.com/letzabelin/generate-difference)
-[![Maintainability](https://api.codeclimate.com/v1/badges/bd780c263f070201781e/maintainability)](https://codeclimate.com/github/letzabelin/generate-difference/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/bd780c263f070201781e/test_coverage)](https://codeclimate.com/github/letzabelin/generate-difference/test_coverage)
+[![Maintainability](https://api.codeclimate.com/v1/badges/c701041e8949c6e9e83b/maintainability)](https://codeclimate.com/github/letzabelin/generate-difference/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/c701041e8949c6e9e83b/test_coverage)](https://codeclimate.com/github/letzabelin/generate-difference/test_coverage)
 
 # Вычислитель отличий by Hexlet
 
